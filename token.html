@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Enter Token</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #6cd1ff;
+        text-align: center;
+        color: #fff;
+        margin: 0;
+    }
+    .card {
+        background: #fff;
+        width: 80%;
+        margin: auto;
+        margin-top: 90px;
+        padding: 40px;
+        border-radius: 20px;
+        color: #333;
+    }
+    input {
+        width: 90%;
+        height: 50px;
+        font-size: 22px;
+        padding-left: 15px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+    }
+    button {
+        margin-top: 25px;
+        width: 70%;
+        height: 55px;
+        font-size: 26px;
+        border: none;
+        border-radius: 12px;
+        background: #0084ff;
+        color: white;
+        cursor: pointer;
+    }
+    pre {
+        margin-top: 30px;
+        color: black;
+        background: #f3f3f3;
+        padding: 20px;
+        text-align: left;
+        border-radius: 10px;
+        font-size: 14px;
+        overflow-x: auto;
+    }
+</style>
+
+<script>
+function unlock() {
+    let token = document.getElementById("token").value;
+
+    if (token === "MK496") {
+        document.getElementById("result").innerHTML =
+        `<pre>
+import random
+import time
+
+# ANSI color codes
+RED = '\\033[91m'
+GREEN = '\\033[92m'
+YELLOW = '\\033[93m'
+CYAN = '\\033[96m'
+RESET = '\\033[0m'
+
+width = 80
+
+print("="*width)
+print(f"{'MK EARNING BOX':^{width}}")
+print("="*width + "\\n")
+
+period = int(input("ENTER STARTING PERIOD NUMBER: "))
+
+while True:
+    number = random.randint(0, 9)
+    big_small = random.choice(["BIG", "SMALL"])
+    color = random.choice(["RED", "GREEN"])
+    big_small_percent = random.randint(60, 100)
+    color_percent = random.randint(60, 100)
+
+    print("\\n" + f"* PERIOD - {period} *".center(width))
+    print(f"RESULT NO : {YELLOW}{number}{RESET}".center(width))
+    print(f"BIG/SMALL : {big_small} ({big_small_percent}%)".center(width))
+    print(f"COLOR     : {color} ({color_percent}%)".center(width))
+    print("\\n" + "-"*width)
+
+    for sec in range(30, 0, -1):
+        print(f"\\rTIME LEFT : {CYAN}{sec:02d} SEC{RESET}".center(width), end="", flush=True)
+        time.sleep(1)
+
+    period += 1
+        </pre>`;
+    } else {
+        document.getElementById("result").innerHTML = "<p style='color:red;'>Invalid Token</p>";
+    }
+}
+</script>
+
+</head>
+<body>
+
+<div class="card">
+    <h1>Enter Your Token Code</h1>
+    <p>Your token is valid for demo access.</p>
+
+    <input id="token" placeholder="Enter Token">
+    <button onclick="unlock()">Unlock Now</button>
+
+    <div id="result"></div>
+
+</div>
+
+</body>
+</html>
